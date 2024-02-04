@@ -1,6 +1,7 @@
 package dev.parikh.kinoserver.search;
 
 import dev.parikh.kinoserver.TmdbClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,18 +9,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SearchController {
 
+    @Autowired
+    TmdbClient client;
+
     @GetMapping("/search")
     Search search(@RequestParam(value = "query") String query) {
-        return TmdbClient.service.getSearch(query);
+        return client.service.getSearch(query);
     }
 
     @GetMapping("/search/movies")
     Search searchMovies(@RequestParam(value = "query") String query) {
-        return TmdbClient.service.getSearchMovies(query);
+        return client.service.getSearchMovies(query);
     }
 
     @GetMapping("/search/people")
     Search searchPeople(@RequestParam(value = "query") String query) {
-        return TmdbClient.service.getSearchPeople(query);
+        return client.service.getSearchPeople(query);
     }
 }
