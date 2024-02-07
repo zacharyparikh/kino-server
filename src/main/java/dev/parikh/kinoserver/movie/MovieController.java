@@ -13,7 +13,7 @@ public class MovieController {
     TmdbClient client;
 
     @GetMapping("/movie")
-    public Movie movie(@RequestParam( value = "id" ) long id) {
+    public Movie movie(@RequestParam( value = "id" ) String id) {
         return client.service.getMovie(id);
     }
 }
