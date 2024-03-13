@@ -15,8 +15,8 @@ public interface TmdbService {
     @GetExchange("/search/multi?language=en-US&page=1&region=US")
     Search getSearch(@RequestParam String query);
 
-    @GetExchange("/search/movie?language=en-US&page=1&region=US")
-    Search getSearchMovies(@RequestParam String query);
+    @GetExchange("/search/movie?language=en-US&region=US")
+    Search getSearchMovies(@RequestParam String query, @RequestParam String page);
 
     @GetExchange("/search/person?language=en-US&page=1")
     Search getSearchPeople(@RequestParam String query);
