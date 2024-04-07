@@ -1,6 +1,6 @@
 package dev.parikh.kinoserver;
 
-import org.springframework.core.env.Environment;
+import dev.parikh.kinoserver.config.TmdbConfig;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.support.RestClientAdapter;
@@ -11,11 +11,10 @@ public class TmdbClient {
 
     public TmdbService service;
 
-    public TmdbClient(Environment environment) {
-        String bearerToken = environment.getProperty("authorization.bearerToken");
+    public TmdbClient(TmdbConfig config) {
         RestClient client = RestClient.builder()
-                .baseUrl("https://api.themoviedb.org/3/")
-                .defaultHeader("Authorization", "Bearer " + bearerToken)
+                .baseUrl(config.apiUrl())
+                .defaultHeader("Authorization", "Bearer " + config.bearerToken())
                 .build();
         RestClientAdapter adapter = RestClientAdapter.create(client);
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();

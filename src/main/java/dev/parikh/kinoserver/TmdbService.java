@@ -10,7 +10,7 @@ import org.springframework.web.service.annotation.GetExchange;
 public interface TmdbService {
 
     @GetExchange("/movie/{movieId}")
-    Movie getMovie(@PathVariable long movieId);
+    Movie getMovie(@PathVariable String movieId);
 
     @GetExchange("/search/multi?language=en-US&page=1&region=US")
     Search getSearch(@RequestParam String query);
