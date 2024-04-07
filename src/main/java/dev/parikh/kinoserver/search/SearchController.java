@@ -20,8 +20,9 @@ public class SearchController {
     }
 
     @GetMapping("/search/movies")
-    Search searchMovies(@RequestParam(value = "query") String query) {
-        return client.service.getSearchMovies(query);
+    Search searchMovies(@RequestParam(value = "query") String query,
+                        @RequestParam(value = "page") String page) {
+        return client.service.getSearchMovies(query, page);
     }
 
     @GetMapping("/search/people")

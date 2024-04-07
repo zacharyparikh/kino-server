@@ -15,7 +15,7 @@ public class MovieController {
     }
 
     @GetMapping("/movie")
-    public Movie movie(@RequestParam( value = "id" ) String id) {
+    public Movie movie(@RequestParam(value = "id") String id) {
         return client.service.getMovie(id);
     }
 }
