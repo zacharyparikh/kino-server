@@ -21,7 +21,9 @@ public class KinoServerApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(@NonNull CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:5173");
+				registry.addMapping("/**")
+						.allowedMethods("*")
+						.allowedOrigins("http://localhost:5173");
 			}
 		};
 	}
